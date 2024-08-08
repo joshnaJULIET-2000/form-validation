@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Email Registration Form</title>
+    <script>
+        function validateForm() {
+            // Get form elements
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let phone = document.getElementById("phone").value;
+
+            // Regular expressions for validation
+            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            let phonePattern = /^\d{10}$/;
+
+            // Validate email
+            if (email.trim() === "") {
+                alert("Please enter your email.");
+                return false;
+            } else if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Validate password (at least 6 characters)
+            if (password.trim() === "") {
+                alert("Please enter your password.");
+                return false;
+            } else if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            // Validate phone number (10 digits)
+            if (phone.trim() === "") {
+                alert("Please enter your phone number.");
+                return false;
+            } else if (!phonePattern.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            // If all validations pass
+            alert("Registration successful!");
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Email Registration Form</h1>
+    <form onsubmit="return validateForm()">
+        
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone"><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+</body>
+
+</html>
